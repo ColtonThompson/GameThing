@@ -1,0 +1,15 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1700069222
+icon.svg::CompressedTexture2D::4291023778634230084::1699399398::1699399402::1::::<><>::
+::res://Scenes/::1699975632
+create_world.tscn::PackedScene::5564426154560445926::1699975632::0::1::::<><>::res://Scripts/Scenes/create_world.gd<>uid://cx5utiybqpska::::res://Tilesets/world_tileset.tres
+main_menu.tscn::PackedScene::2908534767985753153::1699974013::0::1::::<><>::res://Scripts/Scenes/main_menu.gd
+::res://Scripts/::1699974010
+global.gd::GDScript::-1::1699467770::0::1::::<>Node<>::
+world.gd::GDScript::-1::1699974010::0::1::::<>Node<>::
+::res://Scripts/Scenes/::1699975632
+create_world.gd::GDScript::-1::1699975632::0::1::::<>Node2D<>::
+main_menu.gd::GDScript::-1::1699455466::0::1::::<>Node2D<>::
+::res://Tilesets/::1699971079
+tileset_world.png::CompressedTexture2D::188114748289631068::1699642102::1699642152::1::::<><>::
+world_tileset.tres::TileSet::6450364830951797172::1699971079::0::1::::<><>::uid://cxehteaofnt1::::res://Tilesets/tileset_world.png

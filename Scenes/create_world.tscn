@@ -1,0 +1,143 @@
+[gd_scene load_steps=6 format=3 uid="uid://cljpjym2f55gc"]
+
+[ext_resource type="Script" path="res://Scripts/Scenes/create_world.gd" id="1_w38na"]
+[ext_resource type="TileSet" uid="uid://cx5utiybqpska" path="res://Tilesets/world_tileset.tres" id="2_t2d7n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vy68a"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_o85b0"]
+font_size = 24
+shadow_color = Color(0, 0, 0, 0.592157)
+shadow_offset = Vector2(1, 1.345)
+
+[sub_resource type="Theme" id="Theme_u3qum"]
+
+[node name="CreateWorld" type="Node2D"]
+script = ExtResource("1_w38na")
+
+[node name="WorldName" type="Node" parent="."]
+
+[node name="WorldNameLabel" type="Label" parent="WorldName"]
+offset_left = 82.0
+offset_top = 81.0
+offset_right = 243.0
+offset_bottom = 107.0
+text = "World Name"
+
+[node name="WorldNameField" type="LineEdit" parent="WorldName"]
+offset_left = 83.0
+offset_top = 111.0
+offset_right = 399.0
+offset_bottom = 142.0
+placeholder_text = "Cool World Name"
+
+[node name="WorldSeed" type="Node" parent="."]
+
+[node name="WorldSeedLabel" type="Label" parent="WorldSeed"]
+offset_left = 81.0
+offset_top = 154.0
+offset_right = 242.0
+offset_bottom = 180.0
+text = "World Seed"
+
+[node name="WorldSeedField" type="LineEdit" parent="WorldSeed"]
+offset_left = 86.0
+offset_top = 184.0
+offset_right = 402.0
+offset_bottom = 215.0
+placeholder_text = "Something unique to you!"
+
+[node name="WorldSize" type="Node" parent="."]
+
+[node name="WorldSizeLabel" type="Label" parent="WorldSize"]
+offset_left = 84.0
+offset_top = 231.0
+offset_right = 245.0
+offset_bottom = 257.0
+text = "World Size"
+
+[node name="WorldSizeOption" type="OptionButton" parent="WorldSize"]
+offset_left = 87.0
+offset_top = 258.0
+offset_right = 263.0
+offset_bottom = 289.0
+item_count = 3
+selected = 0
+allow_reselect = true
+popup/item_0/text = "Small"
+popup/item_0/id = 0
+popup/item_1/text = "Medium"
+popup/item_1/id = 1
+popup/item_2/text = "Large"
+popup/item_2/id = 2
+
+[node name="SceneTitle" type="Label" parent="."]
+offset_left = 474.0
+offset_top = 7.0
+offset_right = 706.0
+offset_bottom = 55.0
+text = "Create A World"
+label_settings = SubResource("LabelSettings_vy68a")
+
+[node name="MapName" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 697.0
+offset_top = 60.0
+offset_right = 853.0
+offset_bottom = 97.0
+text = "DefaultWorld"
+label_settings = SubResource("LabelSettings_o85b0")
+
+[node name="Select" type="Button" parent="."]
+offset_left = 696.0
+offset_top = 530.0
+offset_right = 887.0
+offset_bottom = 561.0
+disabled = true
+text = "Start Game!"
+
+[node name="Generate" type="Button" parent="."]
+offset_left = 78.0
+offset_top = 501.0
+offset_right = 182.0
+offset_bottom = 534.0
+text = "Generate"
+
+[node name="Back" type="Button" parent="."]
+offset_left = 79.0
+offset_top = 548.0
+offset_right = 183.0
+offset_bottom = 581.0
+text = "Back to Main Menu"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 466.0
+offset_top = 110.0
+offset_right = 1105.0
+offset_bottom = 519.0
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(625, 409.055)
+layout_mode = 2
+theme = SubResource("Theme_u3qum")
+
+[node name="TileMap" type="TileMap" parent="HBoxContainer/Control"]
+tile_set = ExtResource("2_t2d7n")
+format = 2
+layer_0/name = "ground"
+layer_1/name = "nodes"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+
+[connection signal="text_changed" from="WorldName/WorldNameField" to="." method="_on_world_name_field_text_changed"]
+[connection signal="text_changed" from="WorldSeed/WorldSeedField" to="." method="_on_world_seed_field_text_changed"]
+[connection signal="item_selected" from="WorldSize/WorldSizeOption" to="." method="_on_world_size_option_item_selected"]
+[connection signal="pressed" from="Select" to="." method="_on_select_spawnpoint_pressed"]
+[connection signal="pressed" from="Generate" to="." method="_on_generate_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_cancel_pressed"]

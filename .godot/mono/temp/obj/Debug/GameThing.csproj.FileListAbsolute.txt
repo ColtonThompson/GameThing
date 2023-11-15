@@ -1,0 +1,17 @@
+D:\Game Development\GameThing\.godot\mono\temp\bin\Debug\GameThing.deps.json
+D:\Game Development\GameThing\.godot\mono\temp\bin\Debug\GameThing.runtimeconfig.json
+D:\Game Development\GameThing\.godot\mono\temp\bin\Debug\GameThing.dll
+D:\Game Development\GameThing\.godot\mono\temp\bin\Debug\GameThing.pdb
+D:\Game Development\GameThing\.godot\mono\temp\bin\Debug\GodotSharp.dll
+D:\Game Development\GameThing\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+D:\Game Development\GameThing\.godot\mono\temp\obj\Debug\GameThing.csproj.AssemblyReference.cache
+D:\Game Development\GameThing\.godot\mono\temp\obj\Debug\GameThing.GeneratedMSBuildEditorConfig.editorconfig
+D:\Game Development\GameThing\.godot\mono\temp\obj\Debug\GameThing.AssemblyInfoInputs.cache
+D:\Game Development\GameThing\.godot\mono\temp\obj\Debug\GameThing.AssemblyInfo.cs
+D:\Game Development\GameThing\.godot\mono\temp\obj\Debug\GameThing.csproj.CoreCompileInputs.cache
+D:\Game Development\GameThing\.godot\mono\temp\obj\Debug\GameThing.csproj.CopyComplete
+D:\Game Development\GameThing\.godot\mono\temp\obj\Debug\GameThing.dll
+D:\Game Development\GameThing\.godot\mono\temp\obj\Debug\refint\GameThing.dll
+D:\Game Development\GameThing\.godot\mono\temp\obj\Debug\GameThing.pdb
+D:\Game Development\GameThing\.godot\mono\temp\obj\Debug\GameThing.genruntimeconfig.cache
+D:\Game Development\GameThing\.godot\mono\temp\obj\Debug\ref\GameThing.dll

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "GabwOeAQKFTRsAm2VnypikexqMzI9p8vdjkmVADIJ4PRhFgHCM/Y3+dYgb1disHASZEWzqmUKkKzSPWKkKB26Q==",
+  "success": true,
+  "projectFilePath": "D:\\Game Development\\GameThing\\GameThing.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\colto\\.nuget\\packages\\godot.sourcegenerators\\4.1.3\\godot.sourcegenerators.4.1.3.nupkg.sha512",
+    "C:\\Users\\colto\\.nuget\\packages\\godotsharp\\4.1.3\\godotsharp.4.1.3.nupkg.sha512",
+    "C:\\Users\\colto\\.nuget\\packages\\godotsharpeditor\\4.1.3\\godotsharpeditor.4.1.3.nupkg.sha512"
+  ],
+  "logs": []
+}

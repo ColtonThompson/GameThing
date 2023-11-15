@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://bho6e37fcuxw0"]
+
+[ext_resource type="Script" path="res://Scripts/Scenes/main_menu.gd" id="1_hg7hf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dk1gp"]
+font_size = 64
+shadow_size = 4
+shadow_color = Color(0, 0.00392157, 0.00392157, 0.847059)
+shadow_offset = Vector2(1, 2.415)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_hg7hf")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 468.0
+offset_top = 283.0
+offset_right = 720.0
+offset_bottom = 354.0
+text = "New Game"
+
+[node name="LoadGame" type="Button" parent="."]
+offset_left = 468.0
+offset_top = 377.0
+offset_right = 720.0
+offset_bottom = 448.0
+disabled = true
+text = "Load Game"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 470.0
+offset_top = 465.0
+offset_right = 722.0
+offset_bottom = 536.0
+text = "Quit"
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 506.0
+offset_top = 152.0
+offset_right = 682.0
+offset_bottom = 200.0
+grow_horizontal = 2
+text = "GameThing"
+label_settings = SubResource("LabelSettings_dk1gp")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
