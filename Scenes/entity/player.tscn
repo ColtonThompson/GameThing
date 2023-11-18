@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf3pmfjndq0gh"]
+
+[ext_resource type="Texture2D" uid="uid://wonsj5o4gtsg" path="res://Sprites/player-ph.png" id="1_ulfmx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo51e"]
+size = Vector2(32.5, 31)
+
+[node name="Player" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_xo51e")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_ulfmx")
+
+[node name="Camera2D" type="Camera2D" parent="."]

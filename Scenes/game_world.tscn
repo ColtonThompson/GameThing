@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://fiqsi4xdevi4"]
+
+[ext_resource type="PackedScene" uid="uid://bf3pmfjndq0gh" path="res://Scenes/entity/player.tscn" id="1_2h2qc"]
+[ext_resource type="TileSet" uid="uid://d3chnrnrye4f0" path="res://Tilesets/world_tileset_32.tres" id="2_058ww"]
+[ext_resource type="Script" path="res://Scenes/TileMap.gd" id="3_sw5n6"]
+
+[sub_resource type="GDScript" id="GDScript_rx62v"]
+script/source = "extends Node2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="World" type="Node2D"]
+script = SubResource("GDScript_rx62v")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_058ww")
+cell_quadrant_size = 32
+format = 2
+script = ExtResource("3_sw5n6")
+
+[node name="Player" parent="." instance=ExtResource("1_2h2qc")]
