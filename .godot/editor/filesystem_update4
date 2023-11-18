@@ -9,3 +9,6 @@ res://Scenes/main_menu.tscn
 res://Scenes/game_world.tscn
 res://Scenes/TileMap.gd
 res://Tilesets/world_tileset_32.tres
+res://Scripts/entity/player_controller.gd
+res://Scripts/entity/player.gd
+res://Scripts/Widgets/FPSCounter.gd

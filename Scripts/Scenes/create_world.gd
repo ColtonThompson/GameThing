@@ -14,6 +14,7 @@ func _on_cancel_pressed():
 # Sets the world map name to whatever the player typed into the map name field
 func _on_world_name_field_text_changed(new_text):
 	World.map_name = new_text
+	$UIRoot/MapName.text = new_text
 	print("Map name set to " + new_text)
 	
 # Sets the world seed to whatever the player typed into the map seed field

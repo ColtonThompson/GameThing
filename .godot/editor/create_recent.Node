@@ -1,12 +1,13 @@
+Label
+TileMap
+Camera2D
 CollisionShape2D
 Sprite2D
 CharacterBody2D
-Camera2D
 Node2D
 Node
 Control
 VBoxContainer
-TileMap
 ProgressBar
 HBoxContainer
 BoxContainer
@@ -15,5 +16,4 @@ Button
 OptionButton
 SubViewport
 SubViewportContainer
-Label
 LineEdit
