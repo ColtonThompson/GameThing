@@ -6,14 +6,13 @@
 resource_name = "ground_tiles"
 texture = ExtResource("1_u5jr4")
 texture_region_size = Vector2i(32, 32)
+use_texture_padding = false
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
-3:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
-3:1/0 = 0
 
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_nveup")
