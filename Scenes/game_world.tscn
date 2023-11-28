@@ -12,6 +12,7 @@ script = ExtResource("1_7irx8")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_058ww")
+cell_quadrant_size = 100
 format = 2
 layer_0/name = "background"
 layer_1/name = "foreground"
@@ -22,13 +23,17 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 script = ExtResource("3_sw5n6")
-water_min_threshold = -20
-water_max_threshold = -2
-sand_min_threshold = -2
-grass_max_threshold = 20
-tile_mask_radius = 96
+deepwater_max_threshold = 8
+water_min_threshold = 8
+water_max_threshold = 15
+sand_min_threshold = 15
+sand_max_threshold = 23
+grass_min_threshold = 23
+grass_max_threshold = 100
+tile_mask_radius = 32
 
 [node name="Player" parent="." instance=ExtResource("1_2h2qc")]
+speed = 300
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -54,7 +59,7 @@ offset_bottom = 60.0
 script = ExtResource("6_iavk1")
 
 [node name="MapUpdateTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="MapUpdateTimer" to="TileMap" method="_on_map_update_timer_timeout"]

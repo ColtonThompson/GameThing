@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal chunk_update_required
 
-@export var speed = 200
+@export var speed = 300
 
 func get_input():
 	velocity = Vector2()
