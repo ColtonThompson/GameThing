@@ -1,0 +1,25 @@
+BIOMES
+========================
+
+Desert:
+ - Low to medium altitude
+ - No humidity
+ - High temperature
+
+Tundra:
+ - Low to high altitude
+ - Low humidity (during summer)
+ - Low temperature
+
+Forest:
+ - Low to high temperature
+ - low to high humidity
+ - Medium to high altitude
+
+Grassland:
+ - Medium to high temperatures
+ - Medium humidity
+ - Medium altitude
+
+
+

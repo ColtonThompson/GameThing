@@ -30,7 +30,7 @@ sand_min_threshold = 15
 sand_max_threshold = 23
 grass_min_threshold = 23
 grass_max_threshold = 100
-tile_mask_radius = 32
+tile_mask_radius = 48
 
 [node name="Player" parent="." instance=ExtResource("1_2h2qc")]
 speed = 300
