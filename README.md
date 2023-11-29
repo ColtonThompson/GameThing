@@ -8,9 +8,9 @@ Biomes
 Procedural Generation
 ![Procedural Generation with Tilemaps in Godot.](https://i.imgur.com/e3K2ptt.png)
 
-Chunk system
-![Chunk System Working - WIP.](http://i.imgur.com/Aopzi1Lh.gif)
-
+## Videos
+GameThing - Update #1 - Infinite Procedural Generation w/Tilemaps
+[![Watch the video](https://img.youtube.com/vi/7OO5r-bzZN4/maxresdefault.jpg)](https://www.youtube.com/watch?v=7OO5r-bzZN4)
 
 
 
