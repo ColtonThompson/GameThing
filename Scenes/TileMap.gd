@@ -23,7 +23,11 @@ var altitude = FastNoiseLite.new()
 var temperature = FastNoiseLite.new()
 var humidity = FastNoiseLite.new()
 
+var layer_tiles = 0
+var layer_objects = 1
+
 var seed = 0
+var last_player_location: Vector2i
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,17 +46,25 @@ func _ready():
 	altitude.frequency = 0.005
 	temperature.frequency = 0.005
 	humidity.frequency = 0.005
+	
 	update_world()
+	
+	last_player_location = World.get_player_tile_position()
 	
 func _input(event):
 	if event.is_action_pressed("debug"):
 		update_world()
 		
 func _on_map_update_timer_timeout():
-	update_world()
+	var diffX = abs(World.get_player_tile_position().x - last_player_location.x)
+	var diffY = abs(World.get_player_tile_position().y - last_player_location.y)
+	var dist_required_for_update = tile_mask_radius
+	var needs_update = diffX > dist_required_for_update or diffY > dist_required_for_update
+	if needs_update:
+		update_world()
 	
 func _process(delta):
-	pass
+	World.player_standing_biome = get_biome_for_tile(World.get_player_tile_position())
 	
 func configure_tile_thresholds():
 	if deepwater_max_threshold < deepwater_min_threshold:
@@ -91,14 +103,22 @@ func update_world():
 	# Set cells based on noise values
 	for x in range(start_x, end_x):
 		for y in range(start_y, end_y):
-			var alt = abs(floor(altitude.get_noise_2d(x, y) * 100))
-			var temp = abs(floor(temperature.get_noise_2d(x, y) * 100))
-			var hum = abs(floor(humidity.get_noise_2d(x, y) * 100))
-			set_cell_with_noise(alt, temp, hum, Vector2i(x,y))
+			var pos: Vector2i = Vector2i(x,y)
+			if World.tile_is_set(pos):
+				set_cell(layer_tiles, pos, 0, World.get_tile_atlas_coords(pos))
+			elif World.object_is_set(pos):
+				set_cell(layer_objects, pos, 0, World.get_object_atlas_coords(pos))
+			else:
+				var alt = abs(floor(altitude.get_noise_2d(x, y) * 100))
+				var temp = abs(floor(temperature.get_noise_2d(x, y) * 100))
+				var hum = abs(floor(humidity.get_noise_2d(x, y) * 100))
+				set_cell_with_noise(alt, temp, hum, pos)
 	
 	# Set all cells too far away to -1, -1
 	for cell in get_faraway_tiles_for_cleanup():
-		set_cell(0, Vector2i(cell.x, cell.y), 0, Vector2i(-1, -1))
+		set_cell(layer_tiles, Vector2i(cell.x, cell.y), 0, Vector2i(-1, -1))
+		
+	last_player_location = player_position
 							
 # Determines the type of tile at the cell coordinates with noise values
 func set_cell_with_noise(alt, temp, hum, tile: Vector2i):
@@ -115,25 +135,58 @@ func set_cell_with_noise(alt, temp, hum, tile: Vector2i):
 	var tile_tundra = Vector2i(0,1)
 	var tile_grassland = Vector2i(1,1)
 	var object_tree = Vector2i(0,3)
-	#print("Biome states:")
-	#print("biome_desert: " + str(biome_desert) + ", biome_tundra: " + str(biome_tundra) + 
-	#", biome_forest: " + str(biome_forest) + ", biome_grassland: " + str(biome_grassland) + 
-	#", biome_water: " + str(biome_water) + ", biome_deepwater: " + str(biome_deepwater))
+	var roll = randi_range(0, 100)
 	if biome_forest:
-		var tree_chance = randi_range(0, 100)
-		if tree_chance < 70:
-			set_cell(1, Vector2i(tile.x, tile.y), 0, object_tree)
+		# Trees shouldn't spawn on every tile, so we do a random roll from 0-100
+		if roll <= 30:
+			set_obj_and_data(layer_objects, Vector2i(tile.x, tile.y), 0, object_tree)
 	
 	if biome_deepwater:
-		set_cell(0, Vector2i(tile.x, tile.y), 0, tile_deepwater)
+		set_cell_and_data(layer_tiles, Vector2i(tile.x, tile.y), 0, tile_deepwater)
 	elif biome_water:
-		set_cell(0, Vector2i(tile.x, tile.y), 0, tile_water)
+		set_cell_and_data(layer_tiles, Vector2i(tile.x, tile.y), 0, tile_water)
 	elif biome_tundra:
-		set_cell(0, Vector2i(tile.x, tile.y), 0, tile_tundra)
+		set_cell_and_data(layer_tiles, Vector2i(tile.x, tile.y), 0, tile_tundra)
 	elif biome_desert:
-		set_cell(0, Vector2i(tile.x, tile.y), 0, tile_sand)
+		set_cell_and_data(layer_tiles, Vector2i(tile.x, tile.y), 0, tile_sand)
 	elif biome_grassland:
-		set_cell(0, Vector2i(tile.x, tile.y), 0, tile_grassland)
+		set_cell_and_data(layer_tiles, Vector2i(tile.x, tile.y), 0, tile_grassland)
 	else:
-		set_cell(0, Vector2i(tile.x, tile.y), 0, tile_grass)
+		set_cell_and_data(layer_tiles, Vector2i(tile.x, tile.y), 0, tile_grass)
+
+# Sets the cell for the tile as well as stores the data into a dictionary
+func set_cell_and_data(layer, tile_pos: Vector2i, source_id, atlas_coords: Vector2i):
+	World.set_tile(tile_pos, atlas_coords)
+	set_cell(layer, tile_pos, source_id, atlas_coords)
+	
+# Sets the cell for the object as well as stores the data into a dictionary	
+func set_obj_and_data(layer, tile_pos: Vector2i, source_id, atlas_coords: Vector2i):
+	World.set_object_tile(tile_pos, atlas_coords)
+	set_cell(layer, tile_pos, source_id, atlas_coords)
+	
+# Determines what the atlas coords/source id are at tile_position	
+func get_biome_for_tile(tile_position: Vector2i):
+	var cell_source_id = get_cell_source_id(0, tile_position)
+	var cell_atlas_coords = get_cell_atlas_coords(0, tile_position)
+	var tile_grass = Vector2i(0,0)
+	var tile_sand = Vector2i(1,0)
+	var tile_water = Vector2i(2,0)
+	var tile_deepwater = Vector2i(3,0)
+	var tile_tundra = Vector2i(0,1)
+	var tile_grassland = Vector2i(1,1)
+	match cell_atlas_coords:
+		tile_grass:
+			return "Forest/Fields"
+		tile_sand:
+			return "Desert/Beach"
+		tile_water:
+			return "River/Lake/Ocean"
+		tile_deepwater:
+			return "Deep Ocean"
+		tile_tundra:
+			return "Tundra"
+		tile_grassland:
+			return "Grassland/Savanna"
+		_:
+			return "Unknown Biome"
 		

@@ -4,6 +4,7 @@ signal chunk_update_required
 
 @export var speed = 300
 
+# Handles player input
 func get_input():
 	velocity = Vector2()
 	if Input.is_action_pressed('right'):
@@ -19,7 +20,8 @@ func get_input():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
-	
+
+# Updates every frame
 func _physics_process(delta):
 	World.set_player_tile_position(get_tile_position().x, get_tile_position().y)
 	

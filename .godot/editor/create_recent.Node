@@ -1,6 +1,7 @@
+Label
+CanvasLayer
 DirectionalLight2D
 Timer
-Label
 CharacterBody2D
 Sprite2D
 CollisionShape2D

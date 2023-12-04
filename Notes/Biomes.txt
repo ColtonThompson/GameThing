@@ -19,7 +19,7 @@ Forest:
 Grassland:
  - Medium to high temperatures
  - Medium humidity
- - Medium altitude
+ - Medium altitudem
 
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://fiqsi4xdevi4"]
+[gd_scene load_steps=11 format=3 uid="uid://fiqsi4xdevi4"]
 
 [ext_resource type="PackedScene" uid="uid://bfs65m3e7eb1e" path="res://Scenes/entity/player.tscn" id="1_2h2qc"]
 [ext_resource type="Script" path="res://Scripts/Scenes/game_world.gd" id="1_7irx8"]
@@ -6,9 +6,29 @@
 [ext_resource type="Script" path="res://Scenes/TileMap.gd" id="3_sw5n6"]
 [ext_resource type="Script" path="res://Scripts/Widgets/FPSCounter.gd" id="4_7vwkb"]
 [ext_resource type="Script" path="res://Scripts/Widgets/TilePosition.gd" id="6_iavk1"]
+[ext_resource type="Script" path="res://Scripts/Widgets/Biome.gd" id="7_7e6da"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gn3x3"]
+font_color = Color(1, 1, 0.0588235, 1)
+shadow_color = Color(0, 0, 0, 0.270588)
+shadow_offset = Vector2(1, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jigmb"]
+font_color = Color(1, 1, 0.0588235, 1)
+shadow_color = Color(0, 0, 0, 0.270588)
+shadow_offset = Vector2(1, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2v5sk"]
+font_color = Color(1, 1, 0.0588235, 1)
+shadow_color = Color(0, 0, 0, 0.270588)
+shadow_offset = Vector2(1, 2)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_7irx8")
+
+[node name="MapUpdateTimer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_058ww")
@@ -33,33 +53,42 @@ grass_max_threshold = 100
 tile_mask_radius = 48
 
 [node name="Player" parent="." instance=ExtResource("1_2h2qc")]
-speed = 300
+speed = 1000
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="Debug" type="Control" parent="Player/Camera2D"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -570.0
-offset_top = -318.0
-offset_right = -376.0
-offset_bottom = -233.0
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
 
-[node name="FPSCounter" type="Label" parent="Player/Camera2D/Debug"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Debug" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FPSCounter" type="Label" parent="UI/Debug"]
+layout_mode = 1
+offset_right = 225.0
+offset_bottom = 41.0
+label_settings = SubResource("LabelSettings_gn3x3")
 script = ExtResource("4_7vwkb")
 
-[node name="MapDebug" type="Label" parent="Player/Camera2D/Debug"]
-layout_mode = 0
-offset_top = 37.0
-offset_right = 40.0
-offset_bottom = 60.0
+[node name="MapDebug" type="Label" parent="UI/Debug"]
+layout_mode = 1
+offset_top = 30.0
+offset_right = 260.0
+offset_bottom = 69.0
+label_settings = SubResource("LabelSettings_jigmb")
 script = ExtResource("6_iavk1")
 
-[node name="MapUpdateTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
+[node name="Biome" type="Label" parent="UI/Debug"]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 135.0
+offset_bottom = 83.0
+label_settings = SubResource("LabelSettings_2v5sk")
+script = ExtResource("7_7e6da")
 
 [connection signal="timeout" from="MapUpdateTimer" to="TileMap" method="_on_map_update_timer_timeout"]
