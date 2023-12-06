@@ -9,7 +9,6 @@ size = Vector2(32, 32)
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_ff3yc")
-speed = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ulfmx")
@@ -17,3 +16,9 @@ texture = ExtResource("1_ulfmx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_c18uo")
 one_way_collision = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_speed = 25.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

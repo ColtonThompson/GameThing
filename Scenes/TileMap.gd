@@ -55,13 +55,22 @@ func _input(event):
 	if event.is_action_pressed("debug"):
 		update_world()
 		
+	# Called on the map update timer signal
+	# Checks how far the player has moved, if the player has moved in any direction more than 
+	# dist_required_for_update tiles then it calls update_world()
+	#
+	# TODO: I think this method can be improved
 func _on_map_update_timer_timeout():
 	var diffX = abs(World.get_player_tile_position().x - last_player_location.x)
 	var diffY = abs(World.get_player_tile_position().y - last_player_location.y)
-	var dist_required_for_update = tile_mask_radius
-	var needs_update = diffX > dist_required_for_update or diffY > dist_required_for_update
+	var dist_required_for_update = 16
+	var dist_traveled = diffX + diffY
+	var needs_update = dist_traveled >= dist_required_for_update
+	print("[Map Update] dist_traveled = " + str(dist_traveled) + ", dist_req = "
+	 + str(dist_required_for_update) + ", update needed = " + str(needs_update))
 	if needs_update:
 		update_world()
+		last_player_location = World.get_player_tile_position()
 	
 func _process(delta):
 	World.player_standing_biome = get_biome_for_tile(World.get_player_tile_position())
@@ -108,6 +117,8 @@ func update_world():
 				set_cell(layer_tiles, pos, 0, World.get_tile_atlas_coords(pos))
 			elif World.object_is_set(pos):
 				set_cell(layer_objects, pos, 0, World.get_object_atlas_coords(pos))
+			elif get_source_id(Vector2i(x,y)) != -1: 
+				set_cell(layer_tiles, pos, 0, get_atlas_for_tile(Vector2i(x,y)))
 			else:
 				var alt = abs(floor(altitude.get_noise_2d(x, y) * 100))
 				var temp = abs(floor(temperature.get_noise_2d(x, y) * 100))
@@ -117,8 +128,7 @@ func update_world():
 	# Set all cells too far away to -1, -1
 	for cell in get_faraway_tiles_for_cleanup():
 		set_cell(layer_tiles, Vector2i(cell.x, cell.y), 0, Vector2i(-1, -1))
-		
-	last_player_location = player_position
+	
 							
 # Determines the type of tile at the cell coordinates with noise values
 func set_cell_with_noise(alt, temp, hum, tile: Vector2i):
@@ -189,4 +199,11 @@ func get_biome_for_tile(tile_position: Vector2i):
 			return "Grassland/Savanna"
 		_:
 			return "Unknown Biome"
-		
+
+func get_atlas_for_tile(tile_pos: Vector2i) -> Vector2i:
+	var cell_atlas_coords = get_cell_atlas_coords(0, tile_pos)
+	return cell_atlas_coords	
+	
+func get_source_id(tile_pos: Vector2i) -> int:
+	var cell_source_id = get_cell_source_id(0, tile_pos)
+	return cell_source_id
