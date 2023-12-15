@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://fiqsi4xdevi4"]
+[gd_scene load_steps=14 format=3 uid="uid://fiqsi4xdevi4"]
 
 [ext_resource type="PackedScene" uid="uid://bfs65m3e7eb1e" path="res://Scenes/entity/player.tscn" id="1_2h2qc"]
 [ext_resource type="Script" path="res://Scripts/Scenes/game_world.gd" id="1_7irx8"]
-[ext_resource type="TileSet" uid="uid://d3chnrnrye4f0" path="res://Tilesets/world_tileset_32.tres" id="2_058ww"]
+[ext_resource type="TileSet" uid="uid://cn7cjj4bfpv07" path="res://Tilesets/rpg_tileset.tres" id="2_5x85p"]
 [ext_resource type="Script" path="res://Scenes/TileMap.gd" id="3_sw5n6"]
 [ext_resource type="Script" path="res://Scripts/Widgets/FPSCounter.gd" id="4_7vwkb"]
 [ext_resource type="Script" path="res://Scripts/Widgets/TilePosition.gd" id="6_iavk1"]
 [ext_resource type="Script" path="res://Scripts/Widgets/Biome.gd" id="7_7e6da"]
+[ext_resource type="FontFile" uid="uid://i6h7kxu42roh" path="res://Fonts/Abaddon Bold.ttf" id="8_t86cs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gn3x3"]
 font_color = Color(1, 1, 0.0588235, 1)
@@ -23,15 +24,26 @@ font_color = Color(1, 1, 0.0588235, 1)
 shadow_color = Color(0, 0, 0, 0.270588)
 shadow_offset = Vector2(1, 2)
 
+[sub_resource type="FontVariation" id="FontVariation_j71uw"]
+base_font = ExtResource("8_t86cs")
+
+[sub_resource type="LabelSettings" id="LabelSettings_y3frj"]
+line_spacing = 5.0
+font = SubResource("FontVariation_j71uw")
+font_size = 23
+font_color = Color(1, 1, 1, 0.862745)
+shadow_offset = Vector2(2, 2)
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_7irx8")
 
 [node name="MapUpdateTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.5
 autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("2_058ww")
+light_mask = 7
+tile_set = ExtResource("2_5x85p")
 cell_quadrant_size = 100
 format = 2
 layer_0/name = "background"
@@ -40,8 +52,15 @@ layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
-layer_1/z_index = 0
+layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array()
+layer_2/name = "foreground_overlay"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 2
+layer_2/tile_data = PackedInt32Array()
 script = ExtResource("3_sw5n6")
 deepwater_max_threshold = 8
 water_min_threshold = 8
@@ -67,25 +86,50 @@ grow_vertical = 2
 
 [node name="FPSCounter" type="Label" parent="UI/Debug"]
 layout_mode = 1
-offset_right = 225.0
+offset_left = 5.0
+offset_right = 230.0
 offset_bottom = 41.0
 label_settings = SubResource("LabelSettings_gn3x3")
 script = ExtResource("4_7vwkb")
 
 [node name="MapDebug" type="Label" parent="UI/Debug"]
 layout_mode = 1
+offset_left = 5.0
 offset_top = 30.0
-offset_right = 260.0
+offset_right = 265.0
 offset_bottom = 69.0
 label_settings = SubResource("LabelSettings_jigmb")
 script = ExtResource("6_iavk1")
 
 [node name="Biome" type="Label" parent="UI/Debug"]
 layout_mode = 0
+offset_left = 5.0
 offset_top = 60.0
-offset_right = 135.0
+offset_right = 140.0
 offset_bottom = 83.0
 label_settings = SubResource("LabelSettings_2v5sk")
 script = ExtResource("7_7e6da")
+
+[node name="Vitae" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -331.0
+offset_bottom = 86.0
+grow_horizontal = 0
+
+[node name="PlayerLife" type="Label" parent="UI/Vitae"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -58.0
+offset_top = 10.0
+offset_right = 58.0
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "Life: 100/100"
+label_settings = SubResource("LabelSettings_y3frj")
 
 [connection signal="timeout" from="MapUpdateTimer" to="TileMap" method="_on_map_update_timer_timeout"]

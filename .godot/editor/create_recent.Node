@@ -1,5 +1,7 @@
-Camera2D
 Label
+Control
+AnimatedSprite2D
+Camera2D
 CanvasLayer
 DirectionalLight2D
 Timer
@@ -8,7 +10,6 @@ Sprite2D
 CollisionShape2D
 Node2D
 RemoteTransform2D
-Control
 Node
 TileMap
 VBoxContainer

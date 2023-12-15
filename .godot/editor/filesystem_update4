@@ -1,6 +1,9 @@
 res://Scenes/game_world.tscn
 res://Tilesets/world_tileset_32.tres
-res://Scenes/create_world.tscn
+res://Tilesets/rpg_tileset.tres
 res://Scenes/entity/player.tscn
 res://Scenes/TileMap.gd
+res://Scenes/create_world.tscn
+res://Sprites/player/player.tres
 res://Scripts/entity/player.gd
+res://Scripts/world.gd

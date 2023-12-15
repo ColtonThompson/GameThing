@@ -1,21 +1,24 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1701865420
+::res://::1702646290
 icon.svg::CompressedTexture2D::4291023778634230084::1699399398::1699399402::1::::<><>::
 README.md::TextFile::-1::1701728961::0::1::::<><>::
+::res://Fonts/::1702646314
+Abaddon Bold.ttf::FontFile::625989185546980623::1702646310::1702646314::1::::<><>::
+Abaddon Light.ttf::FontFile::2471931457094810035::1702646310::1702646314::1::::<><>::
 ::res://Notes/::1701203850
 Biomes.txt::TextFile::-1::1701432834::0::1::::<><>::
-::res://Scenes/::1701566776
-create_world.tscn::PackedScene::5564426154560445926::1701566776::0::1::::<><>::res://Scripts/Scenes/create_world.gd
-game_world.tscn::PackedScene::368463322432526449::1701566776::0::1::::<><>::uid://bfs65m3e7eb1e::::res://Scenes/entity/player.tscn<>res://Scripts/Scenes/game_world.gd<>uid://d3chnrnrye4f0::::res://Tilesets/world_tileset_32.tres<>res://Scenes/TileMap.gd<>res://Scripts/Widgets/FPSCounter.gd<>res://Scripts/Widgets/TilePosition.gd<>res://Scripts/Widgets/Biome.gd
+::res://Scenes/::1702646951
+create_world.tscn::PackedScene::5564426154560445926::1702646951::0::1::::<><>::res://Scripts/Scenes/create_world.gd
+game_world.tscn::PackedScene::368463322432526449::1702646951::0::1::::<><>::uid://bfs65m3e7eb1e::::res://Scenes/entity/player.tscn<>res://Scripts/Scenes/game_world.gd<>uid://cn7cjj4bfpv07::::res://Tilesets/rpg_tileset.tres<>res://Scenes/TileMap.gd<>res://Scripts/Widgets/FPSCounter.gd<>res://Scripts/Widgets/TilePosition.gd<>res://Scripts/Widgets/Biome.gd<>uid://i6h7kxu42roh::::res://Fonts/Abaddon Bold.ttf
 main_menu.tscn::PackedScene::2908534767985753153::1700329993::0::1::::<><>::res://Scripts/Scenes/main_menu.gd
-TileMap.gd::GDScript::-1::1701566775::0::1::::<>TileMap<>::
-::res://Scenes/entity/::1701601509
-player.tscn::PackedScene::2776460175808635292::1701601509::0::1::::<><>::res://Scripts/entity/player.gd<>uid://wonsj5o4gtsg::::res://Sprites/player-ph.png
-::res://Scripts/::1701550473
+TileMap.gd::GDScript::-1::1702646948::0::1::::<>TileMap<>::
+::res://Scenes/entity/::1702646951
+player.tscn::PackedScene::2776460175808635292::1702646951::0::1::::<><>::res://Scripts/entity/player.gd<>uid://cvnincb3yb2r3::::res://Sprites/player/player.tres
+::res://Scripts/::1702049274
 global.gd::GDScript::-1::1701164495::0::1::::<>Node<>::
-world.gd::GDScript::-1::1701550473::0::1::::<>Node<>::
-::res://Scripts/entity/::1701223909
-player.gd::GDScript::-1::1701223909::0::1::::<>CharacterBody2D<>::
+world.gd::GDScript::-1::1702049274::0::1::::<>Node<>::
+::res://Scripts/entity/::1702645402
+player.gd::GDScript::-1::1702645402::0::1::::<>CharacterBody2D<>::
 ::res://Scripts/Scenes/::1701164495
 create_world.gd::GDScript::-1::1701164495::0::1::::<>Node2D<>::
 game_world.gd::GDScript::-1::1701164495::0::1::::<>Node2D<>::
@@ -24,10 +27,17 @@ main_menu.gd::GDScript::-1::1699455466::0::1::::<>Node2D<>::
 Biome.gd::GDScript::-1::1701221912::0::1::::<>Label<>::
 FPSCounter.gd::GDScript::-1::1701164495::0::1::::<>Label<>::
 TilePosition.gd::GDScript::-1::1701164495::0::1::::<>Label<>::
-::res://Sprites/::1701164495
+::res://Sprites/::1702643686
 player-ph.png::CompressedTexture2D::1573877833519193334::1701164495::1701164495::1::::<><>::
-::res://Tilesets/::1701556829
+::res://Sprites/player/::1702644541
+player.png::CompressedTexture2D::6501122456287797476::1702643695::1702643699::1::::<><>::
+player.tres::SpriteFrames::6274153053746394386::1702644541::0::1::::<><>::uid://cyvgsi2nouahw::::res://Sprites/player/player.png
+::res://Tilesets/::1702646901
+IceTileset.png::CompressedTexture2D::2617853005523220937::1702641598::1702641632::1::::<><>::
+RPG Nature Tileset Autumn.png::CompressedTexture2D::8360814768497031304::1702641600::1702641632::1::::<><>::
+RPG Nature Tileset.png::CompressedTexture2D::1464394311856712539::1702647646::1702647665::1::::<><>::
+rpg_tileset.tres::TileSet::5751494446503424110::1702646901::0::1::::<><>::uid://u4mmit2rshhr::::res://Tilesets/RPG Nature Tileset.png<>uid://drebnr0p7bkqy::::res://Tilesets/RPG Nature Tileset Autumn.png<>uid://bdkdwk7f2sif6::::res://Tilesets/IceTileset.png
 tileset_world.png::CompressedTexture2D::188114748289631068::1699642102::1699642152::1::::<><>::
 tileset_world_32.png::CompressedTexture2D::2444487362720153609::1701211890::1701210327::1::::<><>::
 world_tileset.tres::TileSet::6450364830951797172::1700324177::0::1::::<><>::uid://cxehteaofnt1
-world_tileset_32.tres::TileSet::9129127576506533431::1701556829::0::1::::<><>::uid://ba3el5jnlgqpl::::res://Tilesets/tileset_world_32.png
+world_tileset_32.tres::TileSet::9129127576506533431::1702641940::0::1::::<><>::uid://ba3el5jnlgqpl::::res://Tilesets/tileset_world_32.png
