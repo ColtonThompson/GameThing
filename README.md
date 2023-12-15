@@ -2,6 +2,9 @@
  2D Orthographic video game written in GDScript using the Godot Engine.
  
 ## Images
+New Character/World art!
+![New Character/World art!](https://i.imgur.com/Isczz98.png)
+
 Biomes
 ![Biomes - first pass!](https://i.imgur.com/JuGiGMO.png)
 
