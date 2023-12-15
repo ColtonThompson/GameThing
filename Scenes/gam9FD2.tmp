@@ -112,6 +112,19 @@ offset_bottom = 83.0
 label_settings = SubResource("LabelSettings_2v5sk")
 script = ExtResource("7_7e6da")
 
+[node name="Hearts" type="Control" parent="UI" node_paths=PackedStringArray("hearts")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 821.0
+offset_right = 821.0
+script = ExtResource("10_rs6fw")
+hearts = [null, null, null, null, null, null, null, null, null, null]
+
+[node name="thefuckingnode" type="TextureRect" parent="UI/Hearts"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Health" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 1
@@ -134,29 +147,5 @@ grow_horizontal = 2
 text = "Life: 100/100"
 label_settings = SubResource("LabelSettings_y3frj")
 script = ExtResource("9_sfgxn")
-
-[node name="Hearts" type="Node2D" parent="UI/Health" node_paths=PackedStringArray("hearts")]
-script = ExtResource("10_rs6fw")
-hearts = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("5"), NodePath("6"), NodePath("7"), NodePath("8"), NodePath("9"), NodePath("10")]
-
-[node name="1" type="Sprite2D" parent="UI/Health/Hearts"]
-
-[node name="2" type="Sprite2D" parent="UI/Health/Hearts"]
-
-[node name="3" type="Sprite2D" parent="UI/Health/Hearts"]
-
-[node name="4" type="Sprite2D" parent="UI/Health/Hearts"]
-
-[node name="5" type="Sprite2D" parent="UI/Health/Hearts"]
-
-[node name="6" type="Sprite2D" parent="UI/Health/Hearts"]
-
-[node name="7" type="Sprite2D" parent="UI/Health/Hearts"]
-
-[node name="8" type="Sprite2D" parent="UI/Health/Hearts"]
-
-[node name="9" type="Sprite2D" parent="UI/Health/Hearts"]
-
-[node name="10" type="Sprite2D" parent="UI/Health/Hearts"]
 
 [connection signal="timeout" from="MapUpdateTimer" to="TileMap" method="_on_map_update_timer_timeout"]
