@@ -17,8 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://Scripts/global.gd"
-World="*res://Scripts/world.gd"
+Global="*res://Scripts/Autoload/Global.gd"
+World="*res://Scripts/Autoload/World.gd"
+PlayerManager="*res://Scripts/Autoload/PlayerManager.gd"
 
 [dotnet]
 

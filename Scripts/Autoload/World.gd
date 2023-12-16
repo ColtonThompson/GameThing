@@ -27,10 +27,6 @@ var layer_objects_overlay = 2
 # Enables printing of various info to the console
 var debug_mode = true
 
-# Player Variables
-var player_current_health = 100
-var player_max_health = 100
-
 # Sets the tile_pos to the tileset atlas_coords and stores it in a dictionary
 func set_tile(tile_pos: Vector2i, atlas_coords: Vector2i):
 	var tile_is_set = world_tile_data.has(tile_pos)

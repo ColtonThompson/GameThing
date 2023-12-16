@@ -10,12 +10,12 @@ var heart_value = 20
 var half_heart_value = heart_value / 2
 
 func setup_hearts():
-	var heart_containers = World.player_max_health / heart_value
-	var full_heart_containers = World.player_current_health / heart_value
-	var health_remaining_after: float = (World.player_current_health / heart_value) % heart_value
+	var heart_containers = PlayerManager.player_max_health / heart_value
+	var full_heart_containers = PlayerManager.player_current_health / heart_value
+	var health_remaining_after: float = round((PlayerManager.player_current_health / heart_value) % heart_value)
 	var half_heart_containers = 0
 	if health_remaining_after > 0:
-		half_heart_containers = ceili(health_remaining_after / half_heart_value)
+		half_heart_containers = health_remaining_after / half_heart_value
 	var empty_heart_containers = heart_containers - full_heart_containers - half_heart_containers
 	if empty_heart_containers < 0:
 		empty_heart_containers = 0

@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" load_steps=8 format=3 uid="uid://cn7cjj4bfpv07"]
 
-[ext_resource type="Texture2D" uid="uid://u4mmit2rshhr" path="res://Tilesets/RPG Nature Tileset.png" id="1_3dmqi"]
-[ext_resource type="Texture2D" uid="uid://drebnr0p7bkqy" path="res://Tilesets/RPG Nature Tileset Autumn.png" id="2_jf6tu"]
-[ext_resource type="Texture2D" uid="uid://bdkdwk7f2sif6" path="res://Tilesets/IceTileset.png" id="3_biday"]
+[ext_resource type="Texture2D" uid="uid://u4mmit2rshhr" path="res://Tilesets/Art/RPG Nature Tileset.png" id="1_3dmqi"]
+[ext_resource type="Texture2D" uid="uid://drebnr0p7bkqy" path="res://Tilesets/Art/RPG Nature Tileset Autumn.png" id="2_jf6tu"]
+[ext_resource type="Texture2D" uid="uid://bdkdwk7f2sif6" path="res://Tilesets/Art/IceTileset.png" id="3_biday"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pfoqq"]
 

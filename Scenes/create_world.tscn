@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cljpjym2f55gc"]
 
-[ext_resource type="Script" path="res://Scripts/Scenes/create_world.gd" id="1_w38na"]
+[ext_resource type="Script" path="res://Scripts/Scenes/CreateWorld.gd" id="1_pc0mm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vy68a"]
 font_size = 28
@@ -11,7 +11,7 @@ shadow_color = Color(0, 0, 0, 0.592157)
 shadow_offset = Vector2(1, 1.345)
 
 [node name="CreateWorld" type="Node2D"]
-script = ExtResource("1_w38na")
+script = ExtResource("1_pc0mm")
 
 [node name="UIRoot" type="Control" parent="."]
 layout_mode = 3

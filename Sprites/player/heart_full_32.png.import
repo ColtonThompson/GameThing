@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3nxvenudym25"
-path="res://.godot/imported/heart_full_32.png-d7b4b66bcdbcee02f307cc18d35bdf89.ctex"
+path="res://.godot/imported/heart_full_32.png-154c86514297bcc2b8fa8ee4a751cbc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/player/heart_full_32.png"
-dest_files=["res://.godot/imported/heart_full_32.png-d7b4b66bcdbcee02f307cc18d35bdf89.ctex"]
+source_file="res://Sprites/Player/heart_full_32.png"
+dest_files=["res://.godot/imported/heart_full_32.png-154c86514297bcc2b8fa8ee4a751cbc0.ctex"]
 
 [params]
 

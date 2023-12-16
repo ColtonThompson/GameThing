@@ -1,16 +1,16 @@
 [gd_scene load_steps=17 format=3 uid="uid://fiqsi4xdevi4"]
 
 [ext_resource type="PackedScene" uid="uid://bfs65m3e7eb1e" path="res://Scenes/entity/player.tscn" id="1_2h2qc"]
-[ext_resource type="Script" path="res://Scripts/Scenes/game_world.gd" id="1_7irx8"]
+[ext_resource type="Script" path="res://Scripts/Scenes/GameWorld.gd" id="1_a8yov"]
 [ext_resource type="TileSet" uid="uid://cn7cjj4bfpv07" path="res://Tilesets/rpg_tileset.tres" id="2_5x85p"]
 [ext_resource type="Script" path="res://Scenes/TileMap.gd" id="3_sw5n6"]
-[ext_resource type="Script" path="res://Scripts/Widgets/FPSCounter.gd" id="4_7vwkb"]
-[ext_resource type="Script" path="res://Scripts/Widgets/DebugBG.gd" id="5_olko1"]
-[ext_resource type="Script" path="res://Scripts/Widgets/TilePosition.gd" id="6_iavk1"]
-[ext_resource type="Script" path="res://Scripts/Widgets/MapSeed.gd" id="7_ayqp0"]
+[ext_resource type="Script" path="res://Scripts/UI/DebugBG.gd" id="5_s6mu3"]
+[ext_resource type="Script" path="res://Scripts/UI/FPSCounter.gd" id="6_xaer2"]
+[ext_resource type="Script" path="res://Scripts/UI/TilePosition.gd" id="7_8q04p"]
+[ext_resource type="Script" path="res://Scripts/UI/MapSeed.gd" id="8_nnabd"]
 [ext_resource type="FontFile" uid="uid://i6h7kxu42roh" path="res://Fonts/Abaddon Bold.ttf" id="8_t86cs"]
-[ext_resource type="Script" path="res://Scripts/Widgets/player/PlayerHealth.gd" id="9_sfgxn"]
-[ext_resource type="Script" path="res://Scripts/Widgets/player/PlayerHearts.gd" id="10_rs6fw"]
+[ext_resource type="Script" path="res://Scripts/UI/PlayerUI/PlayerHealth.gd" id="10_fyxys"]
+[ext_resource type="Script" path="res://Scripts/UI/PlayerUI/PlayerHearts.gd" id="11_caply"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gn3x3"]
 font_color = Color(1, 1, 0.0588235, 1)
@@ -38,7 +38,7 @@ font_color = Color(1, 1, 1, 0.862745)
 shadow_offset = Vector2(2, 2)
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_7irx8")
+script = ExtResource("1_a8yov")
 
 [node name="MapUpdateTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -92,7 +92,7 @@ layout_mode = 1
 offset_right = 205.0
 offset_bottom = 93.0
 color = Color(0.0196078, 0.0196078, 0.0196078, 0.45098)
-script = ExtResource("5_olko1")
+script = ExtResource("5_s6mu3")
 
 [node name="FPSCounter" type="Label" parent="UI/Debug"]
 layout_mode = 1
@@ -100,7 +100,7 @@ offset_left = 5.0
 offset_right = 230.0
 offset_bottom = 41.0
 label_settings = SubResource("LabelSettings_gn3x3")
-script = ExtResource("4_7vwkb")
+script = ExtResource("6_xaer2")
 
 [node name="MapDebug" type="Label" parent="UI/Debug"]
 layout_mode = 1
@@ -109,7 +109,7 @@ offset_top = 30.0
 offset_right = 265.0
 offset_bottom = 69.0
 label_settings = SubResource("LabelSettings_jigmb")
-script = ExtResource("6_iavk1")
+script = ExtResource("7_8q04p")
 
 [node name="Seed" type="Label" parent="UI/Debug"]
 layout_mode = 0
@@ -118,7 +118,7 @@ offset_top = 60.0
 offset_right = 140.0
 offset_bottom = 83.0
 label_settings = SubResource("LabelSettings_2v5sk")
-script = ExtResource("7_ayqp0")
+script = ExtResource("8_nnabd")
 
 [node name="Health" type="Control" parent="UI"]
 layout_mode = 3
@@ -141,10 +141,10 @@ offset_bottom = 42.0
 grow_horizontal = 2
 text = "Life: 100/100"
 label_settings = SubResource("LabelSettings_y3frj")
-script = ExtResource("9_sfgxn")
+script = ExtResource("10_fyxys")
 
 [node name="Hearts" type="Node2D" parent="UI/Health" node_paths=PackedStringArray("hearts")]
-script = ExtResource("10_rs6fw")
+script = ExtResource("11_caply")
 hearts = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("5"), NodePath("6"), NodePath("7"), NodePath("8"), NodePath("9"), NodePath("10"), NodePath("11"), NodePath("12"), NodePath("13"), NodePath("14"), NodePath("15"), NodePath("16"), NodePath("17"), NodePath("18"), NodePath("19"), NodePath("20")]
 
 [node name="1" type="Sprite2D" parent="UI/Health/Hearts"]
