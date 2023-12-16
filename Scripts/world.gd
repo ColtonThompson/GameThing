@@ -28,8 +28,8 @@ var layer_objects_overlay = 2
 var debug_mode = true
 
 # Player Variables
-var player_current_health = 125
-var player_max_health = 200
+var player_current_health = 100
+var player_max_health = 100
 
 # Sets the tile_pos to the tileset atlas_coords and stores it in a dictionary
 func set_tile(tile_pos: Vector2i, atlas_coords: Vector2i):

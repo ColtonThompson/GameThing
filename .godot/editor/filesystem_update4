@@ -3,3 +3,14 @@ res://Scripts/Widgets/player/PlayerHealth.gd
 res://Sprites/player/player.tres
 res://Tilesets/rpg_tileset.tres
 res://Scripts/Widgets/player/PlayerHearts.gd
+res://Scenes/create_world.tscn
+res://Scripts/entity/player.gd
+res://Scenes/entity/player.tscn
+res://Scripts/Widgets/Biome.gd
+res://Scenes/TileMap.gd
+res://Scripts/Widgets/MapSeed.gd
+res://Scripts/Scenes/game_world.gd
+res://Scripts/Widgets/FPSCounter.gd
+res://Scripts/Widgets/TilePosition.gd
+res://Scripts/Widgets/DebugBG.gd
+res://Scripts/world.gd

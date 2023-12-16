@@ -38,7 +38,8 @@ func handle_player_movement(delta):
 		
 	handleAnimations(input)
 	move_and_slide()
-	
+
+# Plays animations based on player input
 func handleAnimations(input):
 	var animation = $AnimatedSprite2D
 	

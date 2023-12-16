@@ -39,7 +39,8 @@ func _ready():
 	var seed = randi()
 	if World.map_seed.length() > 0:
 		seed = World.map_seed.hash()
-		
+	
+	World.map_seed = seed	
 	altitude.seed = seed
 	temperature.seed = seed
 	humidity.seed = seed

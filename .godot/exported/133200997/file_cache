@@ -1,0 +1,8 @@
+res://Scenes/entity/player.tscn::5a8c0118dc2755f735f7f72574f8cfb5::1702652475::res://.godot/exported/133200997/export-b93de4f7398b923a589eb627d1c7cee3-player.scn
+res://Scenes/create_world.tscn::e2dd8a82686da27b228e2c754685b751::1702652475::res://.godot/exported/133200997/export-2dc30c9a3e6dfb673dc19835901d8c8d-create_world.scn
+res://Scenes/game_world.tscn::3f9053e989a0f2ed9dfc86acbd77ae99::1702679136::res://.godot/exported/133200997/export-bdbf2ba254a2078c85b005689e1549ff-game_world.scn
+res://Scenes/main_menu.tscn::a2b306e8c2988707b83f68f970267961::1700329993::res://.godot/exported/133200997/export-502e6a9b269597544b234abf28958cd8-main_menu.scn
+res://Sprites/player/player.tres::34858785fd84278a5f5d026863e488c5::1702661699::res://.godot/exported/133200997/export-181c987520f585b62af2c5b9b7bbc2e3-player.res
+res://Tilesets/rpg_tileset.tres::ddfe857bc1322d76b6c47319f90bb12e::1702661700::res://.godot/exported/133200997/export-b4319b1f94cc4434ec1caf2a53098d11-rpg_tileset.res
+res://Tilesets/world_tileset.tres::8b49fee880203b2a51f08ef758879644::1700324177::res://.godot/exported/133200997/export-1e978e8edfc9dae224b47f67c1af2d05-world_tileset.res
+res://Tilesets/world_tileset_32.tres::f67b83070398d4f454c85ccbba81ce54::1702641940::res://.godot/exported/133200997/export-ace2d0622ffcbab91b791864dc9ebaa0-world_tileset_32.res

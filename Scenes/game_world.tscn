@@ -1,12 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://fiqsi4xdevi4"]
+[gd_scene load_steps=17 format=3 uid="uid://fiqsi4xdevi4"]
 
 [ext_resource type="PackedScene" uid="uid://bfs65m3e7eb1e" path="res://Scenes/entity/player.tscn" id="1_2h2qc"]
 [ext_resource type="Script" path="res://Scripts/Scenes/game_world.gd" id="1_7irx8"]
 [ext_resource type="TileSet" uid="uid://cn7cjj4bfpv07" path="res://Tilesets/rpg_tileset.tres" id="2_5x85p"]
 [ext_resource type="Script" path="res://Scenes/TileMap.gd" id="3_sw5n6"]
 [ext_resource type="Script" path="res://Scripts/Widgets/FPSCounter.gd" id="4_7vwkb"]
+[ext_resource type="Script" path="res://Scripts/Widgets/DebugBG.gd" id="5_olko1"]
 [ext_resource type="Script" path="res://Scripts/Widgets/TilePosition.gd" id="6_iavk1"]
-[ext_resource type="Script" path="res://Scripts/Widgets/Biome.gd" id="7_7e6da"]
+[ext_resource type="Script" path="res://Scripts/Widgets/MapSeed.gd" id="7_ayqp0"]
 [ext_resource type="FontFile" uid="uid://i6h7kxu42roh" path="res://Fonts/Abaddon Bold.ttf" id="8_t86cs"]
 [ext_resource type="Script" path="res://Scripts/Widgets/player/PlayerHealth.gd" id="9_sfgxn"]
 [ext_resource type="Script" path="res://Scripts/Widgets/player/PlayerHearts.gd" id="10_rs6fw"]
@@ -86,6 +87,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="DebugBG" type="ColorRect" parent="UI/Debug"]
+layout_mode = 1
+offset_right = 205.0
+offset_bottom = 93.0
+color = Color(0.0196078, 0.0196078, 0.0196078, 0.45098)
+script = ExtResource("5_olko1")
+
 [node name="FPSCounter" type="Label" parent="UI/Debug"]
 layout_mode = 1
 offset_left = 5.0
@@ -103,14 +111,14 @@ offset_bottom = 69.0
 label_settings = SubResource("LabelSettings_jigmb")
 script = ExtResource("6_iavk1")
 
-[node name="Biome" type="Label" parent="UI/Debug"]
+[node name="Seed" type="Label" parent="UI/Debug"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 60.0
 offset_right = 140.0
 offset_bottom = 83.0
 label_settings = SubResource("LabelSettings_2v5sk")
-script = ExtResource("7_7e6da")
+script = ExtResource("7_ayqp0")
 
 [node name="Health" type="Control" parent="UI"]
 layout_mode = 3
@@ -137,7 +145,7 @@ script = ExtResource("9_sfgxn")
 
 [node name="Hearts" type="Node2D" parent="UI/Health" node_paths=PackedStringArray("hearts")]
 script = ExtResource("10_rs6fw")
-hearts = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("5"), NodePath("6"), NodePath("7"), NodePath("8"), NodePath("9"), NodePath("10")]
+hearts = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("5"), NodePath("6"), NodePath("7"), NodePath("8"), NodePath("9"), NodePath("10"), NodePath("11"), NodePath("12"), NodePath("13"), NodePath("14"), NodePath("15"), NodePath("16"), NodePath("17"), NodePath("18"), NodePath("19"), NodePath("20")]
 
 [node name="1" type="Sprite2D" parent="UI/Health/Hearts"]
 
@@ -158,5 +166,25 @@ hearts = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("
 [node name="9" type="Sprite2D" parent="UI/Health/Hearts"]
 
 [node name="10" type="Sprite2D" parent="UI/Health/Hearts"]
+
+[node name="11" type="Sprite2D" parent="UI/Health/Hearts"]
+
+[node name="12" type="Sprite2D" parent="UI/Health/Hearts"]
+
+[node name="13" type="Sprite2D" parent="UI/Health/Hearts"]
+
+[node name="14" type="Sprite2D" parent="UI/Health/Hearts"]
+
+[node name="15" type="Sprite2D" parent="UI/Health/Hearts"]
+
+[node name="16" type="Sprite2D" parent="UI/Health/Hearts"]
+
+[node name="17" type="Sprite2D" parent="UI/Health/Hearts"]
+
+[node name="18" type="Sprite2D" parent="UI/Health/Hearts"]
+
+[node name="19" type="Sprite2D" parent="UI/Health/Hearts"]
+
+[node name="20" type="Sprite2D" parent="UI/Health/Hearts"]
 
 [connection signal="timeout" from="MapUpdateTimer" to="TileMap" method="_on_map_update_timer_timeout"]
