@@ -9,26 +9,40 @@ extends Node2D
 var heart_value = 20
 var half_heart_value = heart_value / 2
 
+# TODO: Break down the various parts of code into their own methods to simplify this process.
 func setup_hearts():
-	var heart_containers = PlayerManager.player_max_health / heart_value
-	var full_heart_containers = PlayerManager.player_current_health / heart_value
-	var health_remaining_after: float = round((PlayerManager.player_current_health / heart_value) % heart_value)
-	var half_heart_containers = 0
-	if health_remaining_after > 0:
-		half_heart_containers = health_remaining_after / half_heart_value
-	var empty_heart_containers = heart_containers - full_heart_containers - half_heart_containers
-	if empty_heart_containers < 0:
-		empty_heart_containers = 0
 	print("Hearts array size = " + str(hearts.size()))
-	print("Heart Containers: " + str(heart_containers))
-	print("Health remaining after: " + str(health_remaining_after))
-	print("Full hearts: " + str(full_heart_containers) + ", Half hearts: " + str(half_heart_containers) + ", Empty hearts: " + str(empty_heart_containers))
-	var empty_count = empty_heart_containers
-	var full_count = full_heart_containers
-	var half_count = half_heart_containers
-	var total_hearts = full_count + half_count + empty_count
+	# The total count of heart containers is equal to the players max health divided by heart_value 
+	# We then divide it by two to get the full heart container number
+	# Any remaining health is then consider a half heart
+	var total_hearts = PlayerManager.player_max_health / heart_value
+	var current_half_hearts = PlayerManager.player_current_health / half_heart_value
+	var max_half_hearts = PlayerManager.player_max_health / half_heart_value
+	
+	var full_hearts = current_half_hearts / 2
+	var remaining_health_value = PlayerManager.player_current_health - (full_hearts * heart_value)
+	var remaining_half_hearts = 0
+	if remaining_health_value > 0:
+		remaining_half_hearts = remaining_health_value / half_heart_value
+	var empty_hearts = total_hearts - full_hearts - remaining_half_hearts
+	
+	if (World.debug_mode):
+		print("Total Heart Containers = " + str(total_hearts))
+		print("Current Half Hearts = " + str(current_half_hearts))
+		print("Max Half Hearts = " + str(max_half_hearts))
+		print("Full Hearts = " + str(full_hearts))
+		print("Empty Hearts = " + str(empty_hearts))
+	
+	# offsets for drawing
 	var heart_offset_x = 34
 	var heart_offset_y = 0
+	
+	# The count for each type of heart so we can track how many are left to display
+	var full_count = full_hearts
+	var half_count = remaining_half_hearts
+	var empty_count = empty_hearts
+	
+	# The total count that we have drawn thus far to handle rows
 	var count = 0
 	for i in range(hearts.size()):
 		if count >= 10:
@@ -46,12 +60,25 @@ func setup_hearts():
 			hearts[i].texture = heart_empty
 			hearts[i].position = Vector2i(5 + (count * heart_offset_x), 55 + heart_offset_y)
 			empty_count -= 1	
-		#print("New Heart[" + str(i) + "]: Pos(X:" + str(hearts[i].position.x) + ", Y: " + str(hearts[i].position.y) + ") - Count: " + str(count))
 		count += 1
 		
+func reset_hearts():
+	for i in range(hearts.size()):
+		hearts[i].texture = null
+		hearts[i].position = Vector2i(0, 0)
+		
+# TODO: Create a signal to signify a health update is required then call these methods.	
+func update_hearts():
+	reset_hearts()
+	setup_hearts()
+	
 func _ready():
 	setup_hearts()
-
+	
 func _process(delta):
-	pass 
-
+	if Input.is_action_just_pressed("adjust_health"):
+		PlayerManager.player_current_health = randi_range(10,150)
+		PlayerManager.player_max_health = PlayerManager.player_current_health + randi_range(0, 40)
+	
+func _on_ui_update_timer_timeout():
+	update_hearts()

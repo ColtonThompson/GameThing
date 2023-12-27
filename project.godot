@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*res://Scripts/Autoload/Global.gd"
 World="*res://Scripts/Autoload/World.gd"
 PlayerManager="*res://Scripts/Autoload/PlayerManager.gd"
+SaveManager="*res://Scripts/Autoload/SaveManager.gd"
 
 [dotnet]
 
@@ -54,6 +55,11 @@ down={
 debug={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":71,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+adjust_health={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":72,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 

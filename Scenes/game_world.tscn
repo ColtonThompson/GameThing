@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://fiqsi4xdevi4"]
 
-[ext_resource type="PackedScene" uid="uid://bfs65m3e7eb1e" path="res://Scenes/entity/player.tscn" id="1_2h2qc"]
+[ext_resource type="PackedScene" uid="uid://bfs65m3e7eb1e" path="res://Scenes/Entity/player.tscn" id="1_2h2qc"]
 [ext_resource type="Script" path="res://Scripts/Scenes/GameWorld.gd" id="1_a8yov"]
 [ext_resource type="TileSet" uid="uid://cn7cjj4bfpv07" path="res://Tilesets/rpg_tileset.tres" id="2_5x85p"]
 [ext_resource type="Script" path="res://Scenes/TileMap.gd" id="3_sw5n6"]
@@ -42,6 +42,10 @@ script = ExtResource("1_a8yov")
 
 [node name="MapUpdateTimer" type="Timer" parent="."]
 wait_time = 0.5
+autostart = true
+
+[node name="UIUpdateTimer" type="Timer" parent="."]
+wait_time = 0.25
 autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -188,3 +192,4 @@ hearts = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("
 [node name="20" type="Sprite2D" parent="UI/Health/Hearts"]
 
 [connection signal="timeout" from="MapUpdateTimer" to="TileMap" method="_on_map_update_timer_timeout"]
+[connection signal="timeout" from="UIUpdateTimer" to="UI/Health/Hearts" method="_on_ui_update_timer_timeout"]

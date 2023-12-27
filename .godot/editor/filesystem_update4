@@ -1,11 +1,3 @@
-res://Scenes/game_world.tscn
-res://Scripts/Widgets/player/PlayerHealth.gd
-res://Sprites/player/player.tres
-res://Tilesets/rpg_tileset.tres
-res://Scenes/create_world.tscn
-res://Scenes/entity/player.tscn
-res://Scripts/Autoload/PlayerManager.gd
-res://Scripts/Autoload/World.gd
-res://Scripts/UI/PlayerUI/PlayerHearts.gd
 res://Scripts/UI/PlayerUI/PlayerHealth.gd
-res://Scenes/Entity/player.tscn
+res://Sprites/Player/player.tres
+res://Tilesets/rpg_tileset.tres
